@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'db_connect.php';
+
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +21,10 @@
   <header class="top-header">
     <div class="logo">📚 Enrollment Portal</div>
     <div class="header-right">
-      <div class="welcome">Hi, Christian!</div>
+      <div class="welcome">Hi, <?php echo $_SESSION['username']; ?>!</div>
       <div class="profile">
         <img src="https://i.pravatar.cc/40" alt="Profile" />
-        <span class="username">Chan</span>
+        <span class="username"></span>
       </div>
       <button class="icon-btn" title="Settings">
         <i class="fas fa-cog"></i>
@@ -69,12 +78,69 @@
         <p>Please check back regularly for updates regarding enrollment and orientation schedules.</p>
       </section>
 
-      <!-- Enrollment Stats -->
-<section id="stats" class="content-section">
-  <h2>📊 Enrollment Statistics</h2>
-  <canvas id="enrollmentChart" width="200" height="100"></canvas>
-</section>
+      <!-- ✅ UPDATED Enrollment Stats with Database -->
+      <section id="stats" class="content-section">
+        <h2>📊 Enrollment Statistics</h2>
+        <?php
+        $sql = "SELECT * FROM stats LIMIT 1";
+        $result = $conn->query($sql);
 
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $total = $row['total_enrolled'];
+            $new = $row['new_students'];
+            $transferees = $row['transferees'];
+            $returnees = $row['returning_students'];
+        } else {
+            $total = $new = $transferees = $returnees = 0;
+        }
+        ?>
+        <canvas id="enrollmentChart" width="200" height="100"></canvas>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+          const ctx = document.getElementById('enrollmentChart').getContext('2d');
+          const enrollmentChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: ['Total Enrollees', 'New Students', 'Transferees', 'Returning Students'],
+              datasets: [{
+                label: 'Number of Students',
+                data: [
+                  <?php echo $total; ?>,
+                  <?php echo $new; ?>,
+                  <?php echo $transferees; ?>,
+                  <?php echo $returnees; ?>
+                ],
+                backgroundColor: [
+                  'rgba(75, 192, 192, 0.6)',
+                  'rgba(54, 162, 235, 0.6)',
+                  'rgba(255, 206, 86, 0.6)',
+                  'rgba(255, 99, 132, 0.6)'
+                ],
+                borderColor: [
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        </script>
+      </section>
+
+    </main>
+  </div>
 
   <script>
     const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -91,45 +157,5 @@
       });
     });
   </script>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-  const ctx = document.getElementById('enrollmentChart').getContext('2d');
-  const enrollmentChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Total Enrollees', 'New Students', 'Transferees', 'Returning Students'],
-      datasets: [{
-        label: 'Number of Students',
-        data: [1250, 600, 200, 450],
-        backgroundColor: [
-          'rgba(75, 192, 192, 0.6)',
-          'rgba(54, 162, 235, 0.6)',
-          'rgba(255, 206, 86, 0.6)',
-          'rgba(255, 99, 132, 0.6)'
-        ],
-        borderColor: [
-          'rgba(75, 192, 192, 1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(255, 99, 132, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
-    </main>
-  </div>
-
-
 </body>
 </html>

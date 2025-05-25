@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 /* Body & Fonts */
@@ -79,7 +80,7 @@ body {
 .dashboard-container {
   display: flex;
   height: calc(100vh - 60px);
-  margin-top: 60px; /* To avoid top header overlap */
+  margin-top: 60px;
   width: 100%;
 }
 
@@ -102,20 +103,21 @@ body {
   cursor: pointer;
   font-weight: 600;
   color: #444;
-  transition: background-color 0.25s ease, transform 0.15s ease;
+  transition: background-color 0.25s ease, transform 0.15s ease, color 0.2s ease;
   user-select: none;
 }
 
 .sidebar-item:hover {
   background-color: #e6e6e6;
   transform: scale(1.05);
+  color: #000;
 }
 
 .sidebar-item.active {
   background-color: #d4d4d4;
   font-weight: 700;
   transform: scale(1.1);
-  color: black;
+  color: #000;
 }
 
 /* Main Content */
@@ -206,4 +208,28 @@ table td {
 .stat-label {
   color: #555;
   font-size: 0.95rem;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .sidebar-item {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
 }
