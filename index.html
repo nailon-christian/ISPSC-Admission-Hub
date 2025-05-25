@@ -5,98 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Enrollment Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body class="bg-white text-black font-sans flex min-h-screen">
-  
-  <!-- Sidebar -->
-  <aside class="w-64 bg-gray-100 p-6 flex flex-col shadow-md">
-    <h1 class="text-3xl font-bold mb-8">Dashboard</h1>
-    <nav class="flex flex-col gap-4 text-black">
-      <a href="#" class="hover:bg-gray-300 px-3 py-2 rounded">🏠 Home</a>
-      <a href="#" class="hover:bg-gray-300 px-3 py-2 rounded">📋 Requirements</a>
-      <a href="#" class="hover:bg-gray-300 px-3 py-2 rounded">📆 Schedule</a>
-      <a href="#" class="hover:bg-gray-300 px-3 py-2 rounded">📢 Announcements</a>
-      <a href="#" class="hover:bg-gray-300 px-3 py-2 rounded">⚙️ Settings</a>
+<body>
+  <!-- Fixed Top Header -->
+  <header class="top-header">
+    <div class="logo">📚 Enrollment Portal</div>
+    <div class="header-right">
+      <div class="welcome">Hi, Christian!</div>
+      <div class="profile">
+        <img src="https://i.pravatar.cc/40" alt="Profile" />
+        <span class="username">Chan</span>
+      </div>
+      <button class="icon-btn" title="Settings">
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="dashboard-container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <ul>
+        <li class="sidebar-item active" data-section="requirements">Requirements</li>
+        <li class="sidebar-item" data-section="schedule">Schedule</li>
+        <li class="sidebar-item" data-section="announcements">Announcements</li>
+        <li class="sidebar-item" data-section="stats">Enrollment Stats</li>
+      </ul>
     </nav>
 
-    <!-- User Profile Card -->
-    <div class="mt-auto pt-6 border-t border-gray-300">
-      <p class="font-semibold">Welcome, <span class="text-indigo-700">Christian</span></p>
-      <p class="text-sm text-gray-600">Student ID: 2025-00001</p>
-    </div>
-  </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Admission Requirements -->
+      <section id="requirements" class="content-section active-section">
+        <h2>📋 Admission Requirements</h2>
+        <ul class="requirements-list">
+          <li>✅ Form 138 (Report Card)</li>
+          <li>✅ PSA Birth Certificate</li>
+          <li>✅ Certificate of Good Moral Character</li>
+          <li>✅ 2x2 Recent ID Pictures (2 pcs)</li>
+          <li>✅ Barangay Clearance</li>
+          <li>✅ Honorable Dismissal (if transferee)</li>
+          <li>✅ Medical Certificate</li>
+        </ul>
+      </section>
 
-  <!-- Main Content -->
-  <main class="flex-1 p-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3 overflow-auto">
-    
-    <!-- Admission Requirements Card -->
-    <section class="bg-gray-50 p-6 rounded shadow-md">
-      <h2 class="text-xl font-semibold mb-4">📋 Admission Requirements</h2>
-      <ul class="space-y-2 list-disc list-inside text-black">
-        <li>✅ Form 138 (Report Card)</li>
-        <li>✅ PSA Birth Certificate</li>
-        <li>✅ Certificate of Good Moral Character</li>
-        <li>✅ 2x2 Recent ID Pictures (2 pcs)</li>
-        <li>✅ Barangay Clearance</li>
-        <li>✅ Honorable Dismissal (if transferee)</li>
-        <li>✅ Medical Certificate</li>
-      </ul>
-    </section>
+      <!-- Schedule -->
+      <section id="schedule" class="content-section">
+        <h2>📆 Schedule</h2>
+        <table>
+          <tbody>
+            <tr><td>📅 Start of Admission</td><td>June 1, 2025</td></tr>
+            <tr><td>📅 Deadline for Submission</td><td>July 15, 2025</td></tr>
+            <tr><td>📅 Interview Schedule</td><td>July 20–25, 2025</td></tr>
+            <tr><td>📅 Release of Results</td><td>August 1, 2025</td></tr>
+          </tbody>
+        </table>
+      </section>
 
-    <!-- Schedule Card -->
-    <section class="bg-gray-50 p-6 rounded shadow-md">
-      <h2 class="text-xl font-semibold mb-4">📆 Schedule</h2>
-      <table class="w-full text-left text-black">
-        <tbody>
-          <tr class="border-b border-gray-300 hover:bg-green-50 transition-colors">
-            <td class="py-2">📅 Start of Admission</td>
-            <td class="py-2">June 1, 2025</td>
-          </tr>
-          <tr class="border-b border-gray-300 hover:bg-green-50 transition-colors">
-            <td class="py-2">📅 Deadline for Submission</td>
-            <td class="py-2">July 15, 2025</td>
-          </tr>
-          <tr class="border-b border-gray-300 hover:bg-green-50 transition-colors">
-            <td class="py-2">📅 Interview Schedule</td>
-            <td class="py-2">July 20–25, 2025</td>
-          </tr>
-          <tr class="hover:bg-green-50 transition-colors">
-            <td class="py-2">📅 Release of Results</td>
-            <td class="py-2">August 1, 2025</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
+      <!-- Announcements -->
+      <section id="announcements" class="content-section">
+        <h2>📢 Announcements</h2>
+        <p>Please check back regularly for updates regarding enrollment and orientation schedules.</p>
+      </section>
 
-    <!-- Announcements Card -->
-    <section class="bg-gray-50 p-6 rounded shadow-md">
-      <h2 class="text-xl font-semibold mb-4">📢 Announcements</h2>
-      <p>Please check back regularly for updates regarding enrollment and orientation schedules.</p>
-    </section>
+      <!-- Enrollment Stats -->
+<section id="stats" class="content-section">
+  <h2>📊 Enrollment Statistics</h2>
+  <canvas id="enrollmentChart" width="200" height="100"></canvas>
+</section>
 
-    <!-- Notifications Card -->
-    <section class="bg-gray-50 p-6 rounded shadow-md">
-      <h2 class="text-xl font-semibold mb-4">🔔 Notifications</h2>
-      <ul class="list-disc list-inside space-y-2 text-black">
-        <li>🕒 Enrollment period extended until July 20.</li>
-        <li>📌 Orientation will be online this year.</li>
-        <li>💡 Submit documents early to avoid delays.</li>
-      </ul>
-    </section>
 
-    <!-- Stats Card -->
-    <section class="bg-gray-50 p-6 rounded shadow-md">
-      <h2 class="text-xl font-semibold mb-4">📊 Enrollment Stats</h2>
-      <ul class="text-black space-y-1">
-        <li>Total Applicants: <strong>1,250</strong></li>
-        <li>Documents Verified: <strong>1,100</strong></li>
-        <li>Interviews Scheduled: <strong>900</strong></li>
-        <li>Admissions Confirmed: <strong>850</strong></li>
-      </ul>
-    </section>
+  <script>
+    const sidebarItems = document.querySelectorAll(".sidebar-item");
+    const sections = document.querySelectorAll(".content-section");
 
-  </main>
+    sidebarItems.forEach(item => {
+      item.addEventListener("click", () => {
+        sidebarItems.forEach(i => i.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active-section"));
+
+        item.classList.add("active");
+        const sectionId = item.getAttribute("data-section");
+        document.getElementById(sectionId).classList.add("active-section");
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+  const ctx = document.getElementById('enrollmentChart').getContext('2d');
+  const enrollmentChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Total Enrollees', 'New Students', 'Transferees', 'Returning Students'],
+      datasets: [{
+        label: 'Number of Students',
+        data: [1250, 600, 200, 450],
+        backgroundColor: [
+          'rgba(75, 192, 192, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(255, 99, 132, 0.6)'
+        ],
+        borderColor: [
+          'rgba(75, 192, 192, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(255, 99, 132, 1)'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+    </main>
+  </div>
+
 
 </body>
 </html>

@@ -1,20 +1,23 @@
-// Show current year in footer
-document.getElementById("year").textContent = new Date().getFullYear();
+const sidebarItems = document.querySelectorAll('.sidebar-item');
+const sections = document.querySelectorAll('.content-section');
 
-// Total requirements count
-const totalReqEl = document.getElementById("totalRequirements");
-totalReqEl.textContent = requirementsItems.length;
+sidebarItems.forEach((item) => {
+  item.addEventListener('click', () => {
+    // Remove active from all sidebar items
+    sidebarItems.forEach(i => i.classList.remove('active'));
+    // Add active to clicked sidebar item
+    item.classList.add('active');
 
-// Days until deadline for summary card
-function updateDaysUntilDeadline() {
-  const now = new Date().getTime();
-  const distance = deadline - now;
-  if (distance < 0) {
-    document.getElementById("daysUntilDeadline").textContent = "0";
-  } else {
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    document.getElementById("daysUntilDeadline").textContent = days;
-  }
-}
-updateDaysUntilDeadline();
-setInterval(updateDaysUntilDeadline, 3600000); // update every hour
+    const sectionId = item.getAttribute('data-section');
+
+    // Hide all sections
+    sections.forEach(section => {
+      section.classList.remove('active-section');
+    });
+
+    // Show the selected section
+    document.getElementById(sectionId).classList.add('active-section');
+  });
+});
+
+
