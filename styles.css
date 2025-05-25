@@ -1,15 +1,109 @@
-/* styles.css */
-#requirementsList {
-  max-height: 220px;
-  overflow-y: auto;
+/* Body and base font */
+body {
+  font-family: 'Inter', sans-serif;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-#requirementsList::-webkit-scrollbar {
-  width: 6px;
+/* Sidebar styling */
+aside {
+  min-height: 100vh;
+  border-right: 1px solid #d1d5db; /* Tailwind gray-300 */
 }
 
-#requirementsList::-webkit-scrollbar-thumb {
-  background-color: #a1a1aa; /* gray-400 */
-  border-radius: 3px;
+aside h1 {
+  color: #111827; /* Tailwind gray-900 (almost black) */
+}
+
+aside nav a {
+  color: #111827;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  border-radius: 0.375rem; /* rounded */
+  padding: 0.5rem 0.75rem;
+  display: block;
+  text-decoration: none;
+}
+
+aside nav a:hover,
+aside nav a:focus {
+  background-color: #d1d5db; /* Tailwind gray-300 */
+  outline: none;
+}
+
+/* User profile */
+aside div {
+  color: #374151; /* Tailwind gray-700 */
+  font-size: 0.875rem; /* text-sm */
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d1d5db;
+}
+
+aside div span {
+  color: #4f46e5; /* Tailwind indigo-700 */
+  font-weight: 700;
+}
+
+/* Cards styling */
+section {
+  background-color: #f9fafb; /* Tailwind gray-50 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  color: #111827;
+}
+
+section h2 {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #d1d5db;
+  transition: background-color 0.2s ease;
+}
+
+table tbody tr:hover {
+  background-color: #dcfce7; /* Tailwind green-50 */
+}
+
+table td {
+  padding: 0.5rem 1rem;
+  color: #111827;
+}
+
+/* List styles */
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  aside {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #d1d5db;
+  }
+  main {
+    padding: 1rem;
+    grid-template-columns: 1fr !important;
+  }
 }
