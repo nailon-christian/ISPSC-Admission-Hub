@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISPSC Admission Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <header class="bg-gray-900 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <h1 class="text-xl font-bold">ISPSC Admission Hub</h1>
+      <nav class="space-x-6 hidden md:flex">
+        <a href="#welcome" class="hover:underline">Home</a>
+        <a href="#requirements" class="hover:underline">Requirements</a>
+        <a href="#procedure" class="hover:underline">Procedure</a>
+        <a href="#schedule" class="hover:underline">Schedule</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero / Welcome Section -->
+  <section id="welcome" class="bg-gray-100 py-16 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-black">Welcome, Future ISPSCians!</h2>
+    <p class="text-lg md:w-1/2 mx-auto text-gray-700">
+      Your guide to a smooth and successful admission journey at Ilocos Sur Polytechnic State College.
+    </p>
+  </section>
+
+  <!-- Admission Requirements -->
+  <section id="requirements" class="max-w-6xl mx-auto py-12 px-4">
+    <h3 class="text-2xl font-semibold mb-6 text-black flex items-center gap-2">
+      📌 Admission Requirements
+    </h3>
+
+    <!-- Search box for filtering requirements -->
+    <input
+      type="text"
+      id="reqSearch"
+      placeholder="Search requirements..."
+      class="mb-4 p-2 border border-gray-300 rounded w-full max-w-md focus:outline-none focus:ring-2 focus:ring-gray-500"
+    />
+
+    <ul id="requirementsList" class="space-y-3 list-disc list-inside text-gray-700 border border-gray-300 rounded p-4">
+      <li>Form 138 (Report Card)</li>
+      <li>PSA Birth Certificate</li>
+      <li>Certificate of Good Moral Character</li>
+      <li>2x2 Recent ID Pictures (2 pcs)</li>
+      <li>Barangay Clearance</li>
+      <li>Honorable Dismissal (if transferee)</li>
+      <li>Medical Certificate</li>
+    </ul>
+  </section>
+
+  <!-- Admission Procedure -->
+  <section id="procedure" class="bg-gray-100 py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h3 class="text-2xl font-semibold mb-6 text-black flex items-center gap-2">📝 Admission Procedure</h3>
+      <ol class="list-decimal list-inside space-y-3 text-gray-700">
+        <li>Get and fill out the admission form at the Registrar's Office.</li>
+        <li>Submit all required documents.</li>
+        <li>Wait for verification and evaluation.</li>
+        <li>Pay minimal registration fees (if applicable).</li>
+        <li>Get your student ID and schedule.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Admission Schedule -->
+  <section id="schedule" class="max-w-6xl mx-auto py-12 px-4">
+    <h3 class="text-2xl font-semibold mb-6 text-black flex items-center gap-2">📅 Admission Schedule</h3>
+    <table class="min-w-full border border-gray-300 rounded text-gray-700">
+      <thead class="bg-gray-200 text-gray-900">
+        <tr>
+          <th class="border border-gray-300 px-4 py-2 text-left">Event</th>
+          <th class="border border-gray-300 px-4 py-2 text-left">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="hover:bg-gray-100">
+          <td class="border border-gray-300 px-4 py-2">Start of Admission</td>
+          <td class="border border-gray-300 px-4 py-2">June 1, 2025</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="border border-gray-300 px-4 py-2">Deadline for Submission</td>
+          <td class="border border-gray-300 px-4 py-2">July 15, 2025</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="border border-gray-300 px-4 py-2">Interview Schedule</td>
+          <td class="border border-gray-300 px-4 py-2">July 20-25, 2025</td>
+        </tr>
+        <tr class="hover:bg-gray-100">
+          <td class="border border-gray-300 px-4 py-2">Release of Results</td>
+          <td class="border border-gray-300 px-4 py-2">August 1, 2025</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Countdown timer -->
+    <div class="mt-6 text-center text-gray-800 font-semibold" id="countdown"></div>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" class="bg-white py-12 px-4">
+    <div class="max-w-6xl mx-auto text-center">
+      <h3 class="text-2xl font-semibold mb-4 text-black flex justify-center items-center gap-2">📞 Contact Us</h3>
+      <p>Email: <a href="mailto:admissions@ispsc.edu.ph" class="text-gray-700 hover:underline">admissions@ispsc.edu.ph</a></p>
+      <p>Phone: <a href="tel:+0771234567" class="text-gray-700 hover:underline">(077) 123-4567</a></p>
+      <p>Location: Santa Cruz, Ilocos Sur</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-4 text-center">
+    <p>&copy; <span id="year"></span> ISPSC Admission Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Show current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Countdown timer for Deadline (July 15, 2025)
+    const deadline = new Date("July 15, 2025 23:59:59").getTime();
+    const countdownEl = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = deadline - now;
+
+      if (distance < 0) {
+        countdownEl.textContent = "Deadline for submission has passed.";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.textContent = `⏳ Time left to submit: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Filter requirements list
+    const reqSearch = document.getElementById("reqSearch");
+    const requirementsList = document.getElementById("requirementsList");
+    const requirementsItems = Array.from(requirementsList.getElementsByTagName("li"));
+
+    reqSearch.addEventListener("input", () => {
+      const query = reqSearch.value.toLowerCase();
+      requirementsItems.forEach((item) => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(query) ? "list-item" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
